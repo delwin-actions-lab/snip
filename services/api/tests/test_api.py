@@ -36,3 +36,9 @@ def test_rejects_invalid_url():
 
 def test_unknown_code_is_404():
     assert client.get("/doesnotexist", follow_redirects=False).status_code == 404
+
+
+def test_stats_for_unknown_code_is_404():
+    r = client.get("/links/doesnotexist")
+    assert r.status_code == 404
+    assert r.json() == {"detail": "unknown code"}
