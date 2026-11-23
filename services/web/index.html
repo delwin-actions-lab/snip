@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>snip</title></head>
+<body>
+  <h1>snip</h1>
+  <form id="f"><input id="url" type="url" placeholder="https://..." required><button>Shorten</button></form>
+  <p id="out"></p>
+  <script>
+    document.getElementById("f").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const r = await fetch("/api/links", {method: "POST", headers: {"content-type": "application/json"},
+        body: JSON.stringify({url: document.getElementById("url").value})});
+      const j = await r.json();
+      document.getElementById("out").textContent = r.ok ? `${location.origin}/${j.code}` : "error";
+    });
+  </script>
+</body>
+</html>
