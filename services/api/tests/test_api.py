@@ -42,3 +42,7 @@ def test_stats_for_unknown_code_is_404():
     r = client.get("/links/doesnotexist")
     assert r.status_code == 404
     assert r.json() == {"detail": "unknown code"}
+
+
+def test_deliberately_failing():
+    assert 1 == 2
