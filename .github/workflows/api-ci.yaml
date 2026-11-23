@@ -7,7 +7,6 @@ permissions:
 
 defaults:
   run:
-    shell: bash
     working-directory: services/api
 
 jobs:
